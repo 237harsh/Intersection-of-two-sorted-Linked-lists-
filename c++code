@@ -1,0 +1,31 @@
+Node* findIntersection(Node* head1, Node* head2)
+{
+
+//use map and traverse one   linklist 
+   unordered_map<int,int>mp;
+   Node *curr1=head1;
+   while(curr1!=NULL)
+   {
+       mp[curr1->data]=1;
+       curr1=curr1->next;
+   }
+    
+     Node *d=new  Node(-1);
+      Node *t=d;
+      
+       Node *curr2=head2;
+       while(curr2!=NULL)
+       {
+           if(mp[curr2->data]==1)
+           {
+               mp[curr2->data]++;
+             Node *n=new  Node(curr2->data);
+             t->next=n;
+             t=t->next;
+           }
+           curr2=curr2->next;
+       }
+       
+   return d->next;
+   
+}
